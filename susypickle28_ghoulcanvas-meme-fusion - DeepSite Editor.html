@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<!-- saved from url=(0012)about:srcdoc -->
+<html lang="en" class="dark hovered-element"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GhoulCanvas - Portfolio di Arte Oscura</title>
+<link rel="icon" type="image/x-icon" href="https://huggingface.co/static/favicon.ico">
+    
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            100: '#1a1a1a',
+                            200: '#2d2d2d',
+                            300: '#404040',
+                            400: '#525252',
+                            500: '#666666',
+                            600: '#7a7a7a',
+                            700: '#8e8e8e',
+                            800: '#a3a3a3',
+                            900: '#b8b8b8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<style data-injected-from="style.css">
+
+/* Import Google Fonts for Asian aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap');
+/* Shared styles across all pages */
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: #000;
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 cyan;
+    animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-1 {
+    0% { clip-path: inset(20% 0 80% 0); }
+    20% { clip-path: inset(60% 0 40% 0); }
+    40% { clip-path: inset(80% 0 20% 0); }
+    60% { clip-path: inset(40% 0 60% 0); }
+    80% { clip-path: inset(10% 0 90% 0); }
+    100% { clip-path: inset(70% 0 30% 0); }
+}
+
+@keyframes glitch-2 {
+    0% { clip-path: inset(30% 0 70% 0); }
+    20% { clip-path: inset(50% 0 50% 0); }
+    40% { clip-path: inset(90% 0 10% 0); }
+    60% { clip-path: inset(20% 0 80% 0); }
+    80% { clip-path: inset(80% 0 20% 0); }
+    100% { clip-path: inset(40% 0 60% 0); }
+}
+/* Gallery Card Animations */
+.gallery-card {
+    background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+    border: 1px solid #404040;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.gallery-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover::before {
+    opacity: 1;
+}
+
+.gallery-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+    border-color: #ff0000;
+}
+/* Tokyo Ghoul Style Effects with Subtracted Pattern */
+.ghoul-mask-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.ghoul-mask-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, rgba(255,0,0,0.3), transparent 70%);
+    z-index: 2;
+}
+
+.red-eye-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+.red-eye-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url('https://64.media.tumblr.com/67c35e595710e14031d1803e8f6b4f36/tumblr_inline_nv0mj7jjz01t0zp5p_640.png'),
+        radial-gradient(circle, rgba(255,0,0,0.4) 20%, transparent 70%);
+    z-index: 1;
+}
+
+.blood-splatter-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.blood-splatter-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url('https://64.media.tumblr.com/67c35e595710e14031d1803e8f6b4f36/tumblr_inline_nv0mj7jjz01t0zp5p_640.png'),
+        radial-gradient(circle at 30% 30%, rgba(255,0,0,0.2) 15%, transparent 16%),
+        radial-gradient(circle at 70% 70%, rgba(255,0,0,0.3) 25%, transparent 26%);
+    filter: blur(2px);
+}
+
+.ghoul-character-img {
+    filter: brightness(0.8) contrast(1.2);
+    transition: all 0.3s ease;
+}
+
+.ghoul-character-img:hover {
+    filter: brightness(1.1) contrast(1.3) hue-rotate(-10deg);
+}
+
+/* Kakuja Mask Effect with Subtracted Pattern */
+@keyframes kakuja-pulse {
+    0%, 100% { 
+        opacity: 0.3;
+        background-position: 0 0, 0 0;
+    }
+    50% { 
+        opacity: 0.7;
+        background-position: 993px 993px, 993px 993px;
+    }
+}
+.gallery-card:hover .ghoul-character-img {
+    animation: kakuja-pulse 2s infinite;
+}
+/* Concrete Texture Background */
+.concrete-bg {
+    background-image: 
+        radial-gradient(circle at 25% 25%, #2d2d2d 2%, transparent 2%),
+        radial-gradient(circle at 75% 75%, #2d2d2d 2%, transparent 2%);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+}
+/* Matrix Rain Effect - Red Version */
+.matrix-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+}
+
+.matrix-pattern {
+    position: relative;
+    width: 1000px;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.matrix-column {
+    position: absolute;
+    top: -100%;
+    width: 20px;
+    height: 100%;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: bold;
+    animation: fall linear infinite;
+    white-space: nowrap;
+}
+
+.matrix-column::before {
+    content: "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        to bottom,
+        #ff0000 0%,
+        #ff0000 5%,
+        #ff3333 10%,
+        #ff3333 20%,
+        #ff5555 30%,
+        #ff7777 40%,
+        #ff9999 50%,
+        #ffaaaa 60%,
+        #ffcccc 70%,
+        rgba(255, 0, 0, 0.5) 90%,
+        transparent 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    writing-mode: vertical-lr;
+    letter-spacing: 1px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.matrix-column:nth-child(1) {
+    left: 0px;
+    animation-delay: -2.5s;
+    animation-duration: 3s;
+}
+.matrix-column:nth-child(2) {
+    left: 25px;
+    animation-delay: -3.2s;
+    animation-duration: 4s;
+}
+.matrix-column:nth-child(3) {
+    left: 50px;
+    animation-delay: -1.8s;
+    animation-duration: 2.5s;
+}
+.matrix-column:nth-child(4) {
+    left: 75px;
+    animation-delay: -2.9s;
+    animation-duration: 3.5s;
+}
+.matrix-column:nth-child(5) {
+    left: 100px;
+    animation-delay: -1.5s;
+    animation-duration: 3s;
+}
+.matrix-column:nth-child(6) {
+    left: 125px;
+    animation-delay: -3.8s;
+    animation-duration: 4.5s;
+}
+.matrix-column:nth-child(7) {
+    left: 150px;
+    animation-delay: -2.1s;
+    animation-duration: 2.8s;
+}
+.matrix-column:nth-child(8) {
+    left: 175px;
+    animation-delay: -2.7s;
+    animation-duration: 3.2s;
+}
+.matrix-column:nth-child(9) {
+    left: 200px;
+    animation-delay: -3.4s;
+    animation-duration: 3.8s;
+}
+.matrix-column:nth-child(10) {
+    left: 225px;
+    animation-delay: -1.9s;
+    animation-duration: 2.7s;
+}
+.matrix-column:nth-child(11) {
+    left: 250px;
+    animation-delay: -3.6s;
+    animation-duration: 4.2s;
+}
+.matrix-column:nth-child(12) {
+    left: 275px;
+    animation-delay: -2.3s;
+    animation-duration: 3.1s;
+}
+.matrix-column:nth-child(13) {
+    left: 300px;
+    animation-delay: -3.1s;
+    animation-duration: 3.6s;
+}
+.matrix-column:nth-child(14) {
+    left: 325px;
+    animation-delay: -2.6s;
+    animation-duration: 2.9s;
+}
+.matrix-column:nth-child(15) {
+    left: 350px;
+    animation-delay: -3.7s;
+    animation-duration: 4.1s;
+}
+.matrix-column:nth-child(16) {
+    left: 375px;
+    animation-delay: -2.8s;
+    animation-duration: 3.3s;
+}
+.matrix-column:nth-child(17) {
+    left: 400px;
+    animation-delay: -3.3s;
+    animation-duration: 3.7s;
+}
+.matrix-column:nth-child(18) {
+    left: 425px;
+    animation-delay: -2.2s;
+    animation-duration: 2.6s;
+}
+.matrix-column:nth-child(19) {
+    left: 450px;
+    animation-delay: -3.9s;
+    animation-duration: 4.3s;
+}
+.matrix-column:nth-child(20) {
+    left: 475px;
+    animation-delay: -2.4s;
+    animation-duration: 3.4s;
+}
+.matrix-column:nth-child(21) {
+    left: 500px;
+    animation-delay: -1.7s;
+    animation-duration: 2.4s;
+}
+.matrix-column:nth-child(22) {
+    left: 525px;
+    animation-delay: -3.5s;
+    animation-duration: 3.9s;
+}
+.matrix-column:nth-child(23) {
+    left: 550px;
+    animation-delay: -2s;
+    animation-duration: 3s;
+}
+.matrix-column:nth-child(24) {
+    left: 575px;
+    animation-delay: -4s;
+    animation-duration: 4.4s;
+}
+.matrix-column:nth-child(25) {
+    left: 600px;
+    animation-delay: -1.6s;
+    animation-duration: 2.3s;
+}
+.matrix-column:nth-child(26) {
+    left: 625px;
+    animation-delay: -3s;
+    animation-duration: 3.5s;
+}
+.matrix-column:nth-child(27) {
+    left: 650px;
+    animation-delay: -3.8s;
+    animation-duration: 4s;
+}
+.matrix-column:nth-child(28) {
+    left: 675px;
+    animation-delay: -2.5s;
+    animation-duration: 2.8s;
+}
+.matrix-column:nth-child(29) {
+    left: 700px;
+    animation-delay: -3.2s;
+    animation-duration: 3.6s;
+}
+.matrix-column:nth-child(30) {
+    left: 725px;
+    animation-delay: -2.7s;
+    animation-duration: 3.2s;
+}
+.matrix-column:nth-child(31) {
+    left: 750px;
+    animation-delay: -1.8s;
+    animation-duration: 2.7s;
+}
+.matrix-column:nth-child(32) {
+    left: 775px;
+    animation-delay: -3.6s;
+    animation-duration: 4.1s;
+}
+.matrix-column:nth-child(33) {
+    left: 800px;
+    animation-delay: -2.1s;
+    animation-duration: 3.1s;
+}
+.matrix-column:nth-child(34) {
+    left: 825px;
+    animation-delay: -3.4s;
+    animation-duration: 3.7s;
+}
+.matrix-column:nth-child(35) {
+    left: 850px;
+    animation-delay: -2.8s;
+    animation-duration: 2.9s;
+}
+.matrix-column:nth-child(36) {
+    left: 875px;
+    animation-delay: -3.7s;
+    animation-duration: 4.2s;
+}
+.matrix-column:nth-child(37) {
+    left: 900px;
+    animation-delay: -2.3s;
+    animation-duration: 3.3s;
+}
+.matrix-column:nth-child(38) {
+    left: 925px;
+    animation-delay: -1.9s;
+    animation-duration: 2.5s;
+}
+.matrix-column:nth-child(39) {
+    left: 950px;
+    animation-delay: -3.5s;
+    animation-duration: 3.8s;
+}
+.matrix-column:nth-child(40) {
+    left: 975px;
+    animation-delay: -2.6s;
+    animation-duration: 3.4s;
+}
+
+.matrix-column:nth-child(odd)::before {
+    content: "アイウエオカキクケコサシスセソタチツテトナニヌネハヒフヘホマミムメモヤユヨラリルレロワヲン123456789";
+}
+
+.matrix-column:nth-child(even)::before {
+    content: "ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴァィゥェォャュョッABCDEFGHIJKLMNOPQRSTUVWXYZ";
+}
+
+.matrix-column:nth-child(3n)::before {
+    content: "アカサタナハマヤラワイキシチニヒミリウクスツヌフムユルエケセテネヘメレオコソトノホモヨロヲン0987654321";
+}
+
+.matrix-column:nth-child(4n)::before {
+    content: "ンヲロヨモホノトソコオレメヘネテセケエルユムフヌツスクウリミヒニチシキイワラヤマハナタサカア";
+}
+
+.matrix-column:nth-child(5n)::before {
+    content: "ガザダバパギジヂビピグズヅブプゲゼデベペゴゾドボポヴァィゥェォャュョッ!@#$%^&*_+-=[]|;:,.<>?";
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(200%);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .matrix-column {
+        font-size: 14px;
+        line-height: 16px;
+        width: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .matrix-column {
+        font-size: 12px;
+        line-height: 14px;
+        width: 15px;
+    }
+}
+
+/* Rain Effect */
+.rain-overlay {
+    position: relative;
+}
+
+.rain-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(transparent 90%, rgba(255,255,255,0.1) 90%),
+        linear-gradient(90deg, transparent 90%, rgba(255,255,255,0.1) 90%);
+    background-size: 4px 4px;
+    pointer-events: none;
+}
+/* Blood Splatter Effect with Subtracted Pattern */
+.blood-splatter {
+    position: relative;
+    overflow: hidden;
+}
+
+.blood-splatter::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        url('https://64.media.tumblr.com/67c35e595710e14031d1803e8f6b4f36/tumblr_inline_nv0mj7jjz01t0zp5p_640.png'),
+        radial-gradient(circle at 20% 80%, rgba(255,0,0,0.3) 25%, transparent 26%),
+        radial-gradient(circle at 80% 20%, rgba(255,0,0,0.2) 15%, transparent 16%),
+        radial-gradient(circle at 40% 40%, rgba(255,0,0,0.4) 30%, transparent 31%);
+    filter: blur(1px);
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% { 
+        transform: translate(0, 0) rotate(0deg);
+        background-position: 0 0, 0 0, 0 0;
+    }
+    100% { 
+        transform: translate(-50%, -50%) rotate(360deg);
+        background-position: 993px 993px, 993px 993px, 993px 993px;
+    }
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .glitch-text {
+        font-size: 3rem !important;
+    }
+    
+    .gallery-card {
+        margin-bottom: 2rem;
+    }
+}
+/* Social Media Cards with Subtracted Pattern */
+.social-card {
+    background: 
+        linear-gradient(145deg, #1a1a1a, #2d2d2d),
+        url('https://64.media.tumblr.com/67c35e595710e14031d1803e8f6b4f36/tumblr_inline_nv0mj7jjz01t0zp5p_640.png');
+    background-blend-mode: overlay;
+    border: 1px solid #404040;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.social-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255,0,0,0.15) 25%, transparent 26%),
+        radial-gradient(circle at 80% 20%, rgba(255,0,0,0.1) 15%, transparent 16%),
+        radial-gradient(circle at 40% 40%, rgba(255,0,0,0.2) 30%, transparent 31%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.social-card:hover::before {
+    opacity: 1;
+}
+
+.social-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(255, 0, 0, 0.3),
+        0 0 0 2px rgba(255, 0, 0, 0.3);
+    background: 
+        linear-gradient(145deg, #1a1a1a, #2d2d2d),
+        url('https://64.media.tumblr.com/67c35e595710e14031d1803e8f6b4f36/tumblr_inline_nv0mj7jjz01t0zp5p_640.png'),
+        radial-gradient(circle at 20% 80%, rgba(255,0,0,0.2) 25%, transparent 26%),
+        radial-gradient(circle at 80% 20%, rgba(255,0,0,0.15) 15%, transparent 16%),
+        radial-gradient(circle at 40% 40%, rgba(255,0,0,0.25) 30%, transparent 31%);
+}
+
+.social-icon-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+    transition: all 0.4s ease;
+    background: 
+        linear-gradient(145deg, #1a1a1a, #2d2d2d),
+        url('https://64.media.tumblr.com/67c35e595710e14031d1803e8f6b4f36/tumblr_inline_nv0mj7jjz01t0zp5p_640.png');
+    background-blend-mode: overlay;
+}
+
+.social-card:hover .social-icon-container {
+    transform: rotate(15deg) scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6);
+}
+/* Character Cards */
+.character-card {
+    background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.character-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 40%, rgba(255, 0, 0, 0.1) 60%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.character-card:hover::before {
+    opacity: 1;
+}
+
+.character-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+}
+
+.character-image-container {
+    position: relative;
+    overflow: hidden;
+    height: 280px;
+}
+
+.character-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.character-card:hover .character-image {
+    transform: scale(1.05);
+    filter: brightness(1.1) contrast(1.2);
+}
+
+.kagune-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(255, 0, 0, 0.4) 20%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.character-card:hover .kagune-effect {
+    opacity: 1;
+    animation: kagune-pulse 2s infinite;
+}
+
+@keyframes kagune-pulse {
+    0%, 100% { 
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+/* Enhanced Glitch Effect */
+.glitch-text {
+    position: relative;
+    display: inline-block;
+    text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.025em -0.05em 0 rgba(0,255,0,0.75), 0.025em 0.05em 0 rgba(0,0,255,0.75);
+    animation: glitch 5s infinite;
+}
+
+@keyframes glitch {
+    0%, 14%, 15%, 49%, 50%, 99%, 100% {
+        transform: translate(0);
+    }
+    1% {
+        transform: translate(-2px, 2px);
+    }
+    2% {
+        transform: translate(2px, -2px);
+    }
+    3% {
+        transform: translate(-2px, -2px);
+    }
+    4% {
+        transform: translate(2px, 2px);
+    }
+    51% {
+        transform: translate(-2px, 2px);
+    }
+    52% {
+        transform: translate(-2px, -2px);
+    }
+    53% {
+        transform: translate(2px, 2px);
+    }
+    54% {
+        transform: translate(-2px, 2px);
+    }
+}
+/* Blood Rain Effect */
+.blood-rain {
+    position: relative;
+    overflow: hidden;
+}
+
+.blood-rain::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(transparent 90%, rgba(255,0,0,0.1) 90%),
+        linear-gradient(90deg, transparent 90%, rgba(255,0,0,0.1) 90%);
+    background-size: 4px 4px;
+    pointer-events: none;
+    animation: blood-fall 20s linear infinite;
+}
+
+@keyframes blood-fall {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 0 1000px, 0 1000px; }
+}
+/* Subtraction Banner */
+.subtraction-banner-container {
+    background: linear-gradient(90deg, #000000 0%, #1a1a1a 100%);
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.subtraction-banner {
+    display: flex;
+    animation: banner-scroll 30s linear infinite;
+    position: relative;
+}
+
+.banner-text {
+    color: #ff0000;
+    font-weight: 900;
+    font-size: 1.5rem;
+    padding: 1rem 0.5rem;
+    white-space: nowrap;
+    font-family: 'Orbitron', monospace;
+    text-shadow: 0 0 10px rgba(255,0,0,0.8);
+    flex-shrink: 0;
+    transition: all 0.5s ease;
+}
+
+.subtraction-banner::after {
+    content: '';
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ff0000;
+    filter: blur(8px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.subtraction-banner:hover .banner-text {
+    transform: scale(0.8);
+    opacity: 0.5;
+}
+
+.subtraction-banner:hover::after {
+    opacity: 1;
+    animation: circle-expand 0.8s ease-out forwards;
+}
+
+@keyframes banner-scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes circle-expand {
+    0% {
+        transform: translateY(-50%) scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50%) scale(3);
+        opacity: 0;
+    }
+}
+/* Responsive banner adjustments */
+@media (max-width: 768px) {
+    .subtraction-banner-container {
+        margin-bottom: 2rem;
+    }
+    
+    .banner-text {
+        font-size: 1.25rem;
+        padding: 0.75rem 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-text {
+        font-size: 1rem;
+        padding: 0.5rem 0.25rem;
+    }
+}
+/* Red Eye Glow Animation */
+.red-eye-animation {
+    position: relative;
+}
+
+.red-eye-animation::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255,0,0,0.6) 20%, transparent 70%);
+    z-index: 1;
+    animation: eye-pulse 3s ease-in-out infinite;
+}
+
+@keyframes eye-pulse {
+    0%, 100% { 
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff0000;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #cc0000;
+}
+/* Mobile Responsive Enhancements */
+@media (max-width: 768px) {
+    .social-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .character-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .glitch-text {
+        font-size: 2.5rem !important;
+        line-height: 1.2;
+    }
+    
+    .character-image-container {
+        height: 200px;
+    }
+    
+    .social-icon-container {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .social-icon-container i {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    /* Improved mobile navigation */
+    nav {
+        padding: 0.75rem 1rem;
+    }
+    
+    .logo {
+        font-size: 1.25rem;
+    }
+    
+    /* Better touch targets */
+    .filter-btn, 
+    .social-card a,
+    .character-card {
+        min-height: 44px;
+    }
+    
+    /* Enhanced mobile gallery */
+    .gallery-card {
+        margin-bottom: 1rem;
+    }
+    
+    /* Mobile form improvements */
+    input, textarea, button {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Character focus mobile optimization */
+    .character-card .p-4 h4 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Improved mobile hero section */
+    #hero .text-6xl {
+        font-size: 3rem;
+    }
+    
+    .character-card .p-4 p {
+        font-size: 0.875rem;
+    }
+}
+
+/* Ultra Mobile - Small screens */
+@media (max-width: 480px) {
+    .glitch-text {
+        font-size: 2rem !important;
+    }
+    
+    .social-card .p-6 h3 {
+        font-size: 1.125rem;
+    }
+    
+    .social-card .p-6 a {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .character-image-container {
+        height: 160px;
+    }
+    
+    /* Better spacing for mobile */
+    .py-20 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    
+    .mb-16 {
+        margin-bottom: 3rem;
+    }
+}
+
+</style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.relative{position:relative}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.flex{display:flex}.grid{display:grid}.h-12{height:3rem}.min-h-screen{min-height:100vh}.w-12{width:3rem}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.max-w-xs{max-width:20rem}.flex-grow{flex-grow:1}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.overflow-hidden{overflow:hidden}.rounded-lg{border-radius:0.5rem}.border-t-2{border-top-width:2px}.border-red-600{--tw-border-opacity:1;border-color:rgb(220 38 38 / var(--tw-border-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-dark-300{--tw-bg-opacity:1;background-color:rgb(64 64 64 / var(--tw-bg-opacity, 1))}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.from-black{--tw-gradient-from:#000 var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-600{--tw-gradient-from:#16a34a var(--tw-gradient-from-position);--tw-gradient-to:rgb(22 163 74 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-indigo-600{--tw-gradient-from:#4f46e5 var(--tw-gradient-from-position);--tw-gradient-to:rgb(79 70 229 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-600{--tw-gradient-from:#9333ea var(--tw-gradient-from-position);--tw-gradient-to:rgb(147 51 234 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-emerald-600{--tw-gradient-to:#059669 var(--tw-gradient-to-position)}.to-gray-800{--tw-gradient-to:#1f2937 var(--tw-gradient-to-position)}.to-pink-600{--tw-gradient-to:#db2777 var(--tw-gradient-to-position)}.to-purple-600{--tw-gradient-to:#9333ea var(--tw-gradient-to-position)}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}.text-base{font-size:1rem;line-height:1.5rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-red-700:hover{--tw-bg-opacity:1;background-color:rgb(185 28 28 / var(--tw-bg-opacity, 1))}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 768px){.md\:mb-8{margin-bottom:2rem}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:py-16{padding-top:4rem;padding-bottom:4rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-8xl{font-size:6rem;line-height:1}}@media (min-width: 1024px){.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}}</style><style>
+    @keyframes deepsite-spin {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+    
+    #deepsite-badge-wrapper i {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      padding: 1.5px;
+      transition-property: all;
+      transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+      transition-duration: .2s;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      border-radius: inherit;
+    }
+    
+    #deepsite-badge-wrapper i::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      display: block;
+      border-radius: 9999px;
+      opacity: 0;
+      background: conic-gradient(from 0deg at 50% 50%, #ec4899, #fbbf24, #3b82f6, #ec4899);
+      width: calc(100% * 2);
+      padding-bottom: calc(100% * 2);
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      will-change: transform;
+    }
+    
+    #deepsite-badge-wrapper:hover i::before {
+      opacity: 1;
+      animation: deepsite-spin 3s linear infinite;
+    }
+  </style></head>
+<body class="bg-black text-white min-h-screen flex flex-col">
+    <custom-navbar class="hovered-element"><template shadowrootmode="open">
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+        
+        nav {
+          background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+          padding: 1rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 2px solid #ff0000;
+          position: relative;
+          z-index: 1000;
+        }
+        
+        nav::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: 
+            radial-gradient(circle at 20% 80%, rgba(255,0,0,0.1) 25%, transparent 26%);
+          pointer-events: none;
+        }
+        .logo { 
+          color: #ff0000; 
+          font-weight: 900; 
+          font-size: 1.5rem;
+          font-family: 'Noto Sans SC', sans-serif;
+          text-shadow: 0 0 10px rgba(255,0,0,0.5);
+        }
+.nav-links { 
+          display: flex; 
+          gap: 2rem; 
+          list-style: none; 
+          margin: 0; 
+          padding: 0; 
+        }
+        
+        .nav-links a { 
+          color: white; 
+          text-decoration: none; 
+          font-weight: 700;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+        
+        .nav-links a::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: #ff0000;
+          transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+          width: 100%;
+        }
+        
+        .nav-links a:hover {
+          color: #ff0000;
+        }
+        
+        .mobile-menu-btn {
+          display: none;
+          background: none;
+          border: none;
+          color: white;
+          cursor: pointer;
+        }
+        .mobile-menu {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.95);
+          backdrop-filter: blur(8px);
+          z-index: 9999;
+          padding: 2rem;
+          overflow-y: auto;
+        }
+        
+        .mobile-menu.hidden {
+          display: none;
+        }
+        
+        .mobile-menu:not(.hidden) {
+          display: block;
+        }
+.mobile-menu.active {
+          display: block;
+        }
+        @media (max-width: 768px) {
+          .nav-links {
+            display: none;
+          }
+          
+          .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+          }
+          
+          .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 2rem;
+            height: 100vh;
+            overflow-y: auto;
+          }
+          
+          .mobile-menu ul {
+            padding-top: 2rem;
+          }
+          
+          .mobile-menu a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin: 0.25rem 0;
+            font-size: 1.125rem;
+            min-height: 48px;
+          }
+        }
+        
+        /* Ultra Mobile */
+        @media (max-width: 480px) {
+          nav {
+            padding: 0.5rem 0.75rem;
+          }
+          
+          .logo {
+            font-size: 1.125rem;
+          }
+</style>
+      <nav>
+        <div class="logo">鬼才Gato Zenzei</div>
+<ul class="nav-links">
+          <li><a href="https://huggingface.co/">Home</a></li>
+          <li><a href="https://huggingface.co/deepsite/susypickle28/ghoulcanvas-meme-fusion#social-links">Social Links</a></li>
+        </ul>
+<button class="mobile-menu-btn">
+          <i data-feather="menu"></i>
+        </button>
+        
+        <div class="mobile-menu hidden">
+          <ul class="flex flex-col p-4 gap-2">
+            <li><a href="https://huggingface.co/" class="block py-2 px-4 hover:bg-red-600 rounded">
+              <i data-feather="home" class="w-4 h-4 mr-2"></i>Home
+            </a></li>
+            <li><a href="https://huggingface.co/gallery.html" class="block py-2 px-4 hover:bg-red-600 rounded">Portfolio</a></li>
+            <li><a href="https://huggingface.co/about.html" class="block py-2 px-4 hover:bg-red-600 rounded">Chi Siamo</a></li>
+            <li><a href="https://huggingface.co/blog.html" class="block py-2 px-4 hover:bg-red-600 rounded">Blog</a></li>
+            <li><a href="https://huggingface.co/contact.html" class="block py-2 px-4 hover:bg-red-600 rounded">Contatti</a></li>
+          </ul>
+</div>
+      </nav>
+    </template></custom-navbar>
+    <main class="flex-grow">
+       
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden px-4 hovered-element">
+          <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column hovered-element"></div><div class="matrix-column"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column"></div><div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column"></div><div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+           
+               
+          
+                    
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column hovered-element"></div>
+                    <div class="matrix-column"></div>
+                
+            
+<div class="relative z-10 text-center px-4">
+                <div class="glitch-text text-6xl md:text-8xl font-bold mb-6">
+                    <span class="text-red-600">鬼</span>才Gato Zenzei
+                </div>
+<p class="text-xl md:text-2xl mb-8 text-gray-300 font-mono">
+                    SOCIAL MEDIA HUB
+                </p>
+                <div class="flex justify-center gap-4 hovered-element">
+                    <a href="https://huggingface.co/deepsite/susypickle28/ghoulcanvas-meme-fusion#social-links" class="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-bold text-base transition-all transform hover:scale-105 w-full text-center max-w-xs mx-auto">
+                    Social Links
+                    </a>
+                </div>
+</div>
+        </section>
+        <!-- Social Media Links Section -->
+        <section id="social-links" class="py-20">
+            <div class="container mx-auto px-4">
+                <!-- Subtraction Banner -->
+                <div class="subtraction-banner-container">
+                    <div class="subtraction-banner" id="subtractionBanner">
+                        <span class="banner-text">1000</span>
+                        <span class="banner-text">993</span>
+                        <span class="banner-text">986</span>
+                        <span class="banner-text">979</span>
+                        <span class="banner-text">972</span>
+                        <span class="banner-text">965</span>
+                        <span class="banner-text">958</span>
+                        <span class="banner-text">951</span>
+                        <span class="banner-text">944</span>
+                        <span class="banner-text">937</span>
+                        <span class="banner-text">930</span>
+                        <span class="banner-text">923</span>
+                        <span class="banner-text">916</span>
+                        <span class="banner-text">909</span>
+                        <span class="banner-text">902</span>
+                        <span class="banner-text">895</span>
+                        <span class="banner-text">888</span>
+                        <span class="banner-text">881</span>
+                        <span class="banner-text">874</span>
+                        <span class="banner-text">867</span>
+                        <span class="banner-text">860</span>
+                        <span class="banner-text">853</span>
+                        <span class="banner-text">846</span>
+                        <span class="banner-text">839</span>
+                        <span class="banner-text">832</span>
+                        <span class="banner-text">825</span>
+                        <span class="banner-text">818</span>
+                        <span class="banner-text">811</span>
+                        <span class="banner-text">804</span>
+                        <span class="banner-text">797</span>
+                        <span class="banner-text">790</span>
+                        <span class="banner-text">783</span>
+                        <span class="banner-text">776</span>
+                        <span class="banner-text">769</span>
+                        <span class="banner-text">762</span>
+                        <span class="banner-text">755</span>
+                        <span class="banner-text">748</span>
+                        <span class="banner-text">741</span>
+                        <span class="banner-text">734</span>
+                        <span class="banner-text">727</span>
+                        <span class="banner-text">720</span>
+                        <span class="banner-text">713</span>
+                        <span class="banner-text">706</span>
+                        <span class="banner-text">699</span>
+                        <span class="banner-text">692</span>
+                        <span class="banner-text">685</span>
+                        <span class="banner-text">678</span>
+                        <span class="banner-text">671</span>
+                        <span class="banner-text">664</span>
+                        <span class="banner-text">657</span>
+                        <span class="banner-text">650</span>
+                        <span class="banner-text">643</span>
+                        <span class="banner-text">636</span>
+                        <span class="banner-text">629</span>
+                        <span class="banner-text">622</span>
+                        <span class="banner-text">615</span>
+                        <span class="banner-text">608</span>
+                        <span class="banner-text">601</span>
+                        <span class="banner-text">594</span>
+                        <span class="banner-text">587</span>
+                        <span class="banner-text">580</span>
+                        <span class="banner-text">573</span>
+                        <span class="banner-text">566</span>
+                        <span class="banner-text">559</span>
+                        <span class="banner-text">552</span>
+                        <span class="banner-text">545</span>
+                        <span class="banner-text">538</span>
+                        <span class="banner-text">531</span>
+                        <span class="banner-text">524</span>
+                        <span class="banner-text">517</span>
+                        <span class="banner-text">510</span>
+                        <span class="banner-text">503</span>
+                        <span class="banner-text">496</span>
+                        <span class="banner-text">489</span>
+                        <span class="banner-text">482</span>
+                        <span class="banner-text">475</span>
+                        <span class="banner-text">468</span>
+                        <span class="banner-text">461</span>
+                        <span class="banner-text">454</span>
+                        <span class="banner-text">447</span>
+                        <span class="banner-text">440</span>
+                        <span class="banner-text">433</span>
+                        <span class="banner-text">426</span>
+                        <span class="banner-text">419</span>
+                        <span class="banner-text">412</span>
+                        <span class="banner-text">405</span>
+                        <span class="banner-text">398</span>
+                        <span class="banner-text">391</span>
+                        <span class="banner-text">384</span>
+                        <span class="banner-text">377</span>
+                        <span class="banner-text">370</span>
+                        <span class="banner-text">363</span>
+                        <span class="banner-text">356</span>
+                        <span class="banner-text">349</span>
+                        <span class="banner-text">342</span>
+                        <span class="banner-text">335</span>
+                        <span class="banner-text">328</span>
+                        <span class="banner-text">321</span>
+                        <span class="banner-text">314</span>
+                        <span class="banner-text">307</span>
+                        <span class="banner-text">300</span>
+                        <span class="banner-text">293</span>
+                        <span class="banner-text">286</span>
+                        <span class="banner-text">279</span>
+                        <span class="banner-text">272</span>
+                        <span class="banner-text">265</span>
+                        <span class="banner-text">258</span>
+                        <span class="banner-text">251</span>
+                        <span class="banner-text">244</span>
+                        <span class="banner-text">237</span>
+                        <span class="banner-text">230</span>
+                        <span class="banner-text">223</span>
+                        <span class="banner-text">216</span>
+                        <span class="banner-text">209</span>
+                        <span class="banner-text">202</span>
+                        <span class="banner-text">195</span>
+                        <span class="banner-text">188</span>
+                        <span class="banner-text">181</span>
+                        <span class="banner-text">174</span>
+                        <span class="banner-text">167</span>
+                        <span class="banner-text">160</span>
+                        <span class="banner-text">153</span>
+                        <span class="banner-text">146</span>
+                        <span class="banner-text">139</span>
+                        <span class="banner-text">132</span>
+                        <span class="banner-text">125</span>
+                        <span class="banner-text">118</span>
+                        <span class="banner-text">111</span>
+                        <span class="banner-text">104</span>
+                        <span class="banner-text">97</span>
+                        <span class="banner-text">90</span>
+                        <span class="banner-text">83</span>
+                        <span class="banner-text">76</span>
+                        <span class="banner-text">69</span>
+                        <span class="banner-text">62</span>
+                        <span class="banner-text">55</span>
+                        <span class="banner-text">48</span>
+                        <span class="banner-text">41</span>
+                        <span class="banner-text">34</span>
+                        <span class="banner-text">27</span>
+                        <span class="banner-text">20</span>
+                        <span class="banner-text">13</span>
+                        <span class="banner-text">6</span>
+                        <span class="banner-text">Haiseeee!!!</span>
+                    </div>
+                </div>
+<h2 class="text-4xl md:text-5xl font-bold text-center mb-16 glitch-text">
+                    Social Media
+                </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+<!-- Instagram -->
+                    <div class="social-card group">
+                        <div class="social-icon-container bg-gradient-to-br from-purple-600 to-pink-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram w-12 h-12 text-white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-2 text-red-400">Instagram</h3>
+<p class="text-gray-400 mb-4">@raul_pasi</p>
+                            <a href="https://www.instagram.com/raul_pasi?igsh=MWxqaXo2Z2FtN3Q5MQ==" target="_blank" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-bold text-sm transition-all">
+                                Seguimi
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- TikTok -->
+                    <div class="social-card group">
+                        <div class="social-icon-container bg-gradient-to-br from-black to-gray-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play w-12 h-12 text-white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-2 text-red-400">TikTok</h3>
+                            <p class="text-gray-400 mb-4">@gato_zenzei</p>
+                            <a href="https://www.tiktok.com/@gato_zenzei?_t=ZN-90sZzL2Rtqw&amp;_r=1" target="_blank" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-bold text-sm transition-all">
+                                Seguimi
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Discord -->
+                    <div class="social-card group">
+                        <div class="social-icon-container bg-gradient-to-br from-indigo-600 to-purple-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle w-12 h-12 text-white"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-2 text-red-400">Discord</h3>
+                            <p class="text-gray-400 mb-4">Community</p>
+                            <a href="https://discord.gg/brZQrXNS" target="_blank" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-bold text-sm transition-all">
+                                Unisciti
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <div class="social-card group">
+                        <div class="social-icon-container bg-gradient-to-br from-green-600 to-emerald-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square w-12 h-12 text-white"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-2 text-red-400">WhatsApp</h3>
+                            <p class="text-gray-400 mb-4">Contatto</p>
+                            <a href="https://wa.me/message/GTWZV6SLNXQ5C1" target="_blank" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-bold text-sm transition-all">
+                                Scrivi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tokyo Ghoul Character Showcase -->
+        <section class="bg-dark-300 py-12 md:py-16 border-t-2 border-red-600">
+            <div class="container mx-auto px-4">
+                <h3 class="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8 text-red-400">Tokyo Ghoul</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="character-card">
+                        <div class="character-image-container">
+                            <img src="https://static1.squarespace.com/static/6371c1aaf44e9e0252208a01/6371c3f9f8683953ace757e4/6371cc9ff8683953ace7facc/1668402335792/3AC61DC6-B520-4134-A98C-CBBAFA37ADDE.jpeg?format=original" alt="Tokyo Ghoul Character" class="character-image">
+                            <div class="kagune-effect"></div>
+                        </div>
+                    </div>
+
+                    <div class="character-card">
+                        <div class="character-image-container">
+                            <img src="https://i1.sndcdn.com/artworks-0DDaUX75iNAw5rRf-XM3RtA-t1080x1080.jpg" alt="Tokyo Ghoul Character" class="character-image">
+                            <div class="kagune-effect"></div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="character-card">
+                        <div class="character-image-container">
+                            <img src="https://i.pinimg.com/736x/49/b4/75/49b47566f3da3d0e96a1e167deecdbf4.jpg" alt="Tokyo Ghoul Character" class="character-image">
+                            <div class="kagune-effect"></div>
+                        </div>
+                    
+                    </div>
+</div>
+            </div>
+        </section>
+</main>
+
+    <custom-footer><template shadowrootmode="open">
+      <style>
+        footer {
+          background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+          color: white;
+          padding: 2rem;
+          text-align: center;
+          border-top: 2px solid #ff0000;
+          position: relative;
+          overflow: hidden;
+        }
+        
+        footer::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #ff0000, transparent);
+        }
+        
+        .social-links {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+          color: #666;
+          transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+          color: #ff0000;
+          transform: translateY(-2px);
+        }
+        
+        .meme-characters {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .character {
+          text-align: center;
+        }
+        
+        .character .score {
+          color: #00ff00;
+          font-weight: bold;
+          font-size: 0.875rem;
+        }
+      </style>
+      <footer>
+        
+        <div class="social-links">
+          <a href="https://www.instagram.com/raul_pasi?igsh=MWxqaXo2Z2FtN3Q5MQ==" target="_blank"><i data-feather="instagram"></i></a>
+          <a href="https://www.tiktok.com/@gato_zenzei?_t=ZN-90sZzL2Rtqw&amp;_r=1" target="_blank"><i data-feather="play"></i></a>
+          <a href="https://discord.gg/brZQrXNS" target="_blank"><i data-feather="message-circle"></i></a>
+          <a href="https://wa.me/message/GTWZV6SLNXQ5C1" target="_blank"><i data-feather="message-square"></i></a>
+        </div>
+        <p class="text-gray-500 text-sm">© 2024 鬼才Gato Zenzei - Social Hub</p>
+<p class="text-red-400 text-xs mt-2">Connettiti con la mia follia creativa</p>
+</footer>
+    </template></custom-footer>
+
+    <!-- Component Scripts -->
+    
+    
+    
+    <script>
+        feather.replace();
+    </script>
+<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
+<script data-injected-from="components/footer.js">
+class CustomFooter extends HTMLElement {
+  connectedCallback() {
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+      <style>
+        footer {
+          background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+          color: white;
+          padding: 2rem;
+          text-align: center;
+          border-top: 2px solid #ff0000;
+          position: relative;
+          overflow: hidden;
+        }
+        
+        footer::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #ff0000, transparent);
+        }
+        
+        .social-links {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+          color: #666;
+          transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+          color: #ff0000;
+          transform: translateY(-2px);
+        }
+        
+        .meme-characters {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .character {
+          text-align: center;
+        }
+        
+        .character .score {
+          color: #00ff00;
+          font-weight: bold;
+          font-size: 0.875rem;
+        }
+      </style>
+      <footer>
+        
+        <div class="social-links">
+          <a href="https://www.instagram.com/raul_pasi?igsh=MWxqaXo2Z2FtN3Q5MQ==" target="_blank"><i data-feather="instagram"></i></a>
+          <a href="https://www.tiktok.com/@gato_zenzei?_t=ZN-90sZzL2Rtqw&_r=1" target="_blank"><i data-feather="play"></i></a>
+          <a href="https://discord.gg/brZQrXNS" target="_blank"><i data-feather="message-circle"></i></a>
+          <a href="https://wa.me/message/GTWZV6SLNXQ5C1" target="_blank"><i data-feather="message-square"></i></a>
+        </div>
+        <p class="text-gray-500 text-sm">&copy; 2024 鬼才Gato Zenzei - Social Hub</p>
+<p class="text-red-400 text-xs mt-2">Connettiti con la mia follia creativa</p>
+</footer>
+    `;
+  }
+}
+
+customElements.define('custom-footer', CustomFooter);
+</script>
+<script data-injected-from="components/navbar.js">
+class CustomNavbar extends HTMLElement {
+  connectedCallback() {
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+        
+        nav {
+          background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+          padding: 1rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 2px solid #ff0000;
+          position: relative;
+          z-index: 1000;
+        }
+        
+        nav::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: 
+            radial-gradient(circle at 20% 80%, rgba(255,0,0,0.1) 25%, transparent 26%);
+          pointer-events: none;
+        }
+        .logo { 
+          color: #ff0000; 
+          font-weight: 900; 
+          font-size: 1.5rem;
+          font-family: 'Noto Sans SC', sans-serif;
+          text-shadow: 0 0 10px rgba(255,0,0,0.5);
+        }
+.nav-links { 
+          display: flex; 
+          gap: 2rem; 
+          list-style: none; 
+          margin: 0; 
+          padding: 0; 
+        }
+        
+        .nav-links a { 
+          color: white; 
+          text-decoration: none; 
+          font-weight: 700;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+        
+        .nav-links a::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: #ff0000;
+          transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+          width: 100%;
+        }
+        
+        .nav-links a:hover {
+          color: #ff0000;
+        }
+        
+        .mobile-menu-btn {
+          display: none;
+          background: none;
+          border: none;
+          color: white;
+          cursor: pointer;
+        }
+        .mobile-menu {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.95);
+          backdrop-filter: blur(8px);
+          z-index: 9999;
+          padding: 2rem;
+          overflow-y: auto;
+        }
+        
+        .mobile-menu.hidden {
+          display: none;
+        }
+        
+        .mobile-menu:not(.hidden) {
+          display: block;
+        }
+.mobile-menu.active {
+          display: block;
+        }
+        @media (max-width: 768px) {
+          .nav-links {
+            display: none;
+          }
+          
+          .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+          }
+          
+          .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 2rem;
+            height: 100vh;
+            overflow-y: auto;
+          }
+          
+          .mobile-menu ul {
+            padding-top: 2rem;
+          }
+          
+          .mobile-menu a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin: 0.25rem 0;
+            font-size: 1.125rem;
+            min-height: 48px;
+          }
+        }
+        
+        /* Ultra Mobile */
+        @media (max-width: 480px) {
+          nav {
+            padding: 0.5rem 0.75rem;
+          }
+          
+          .logo {
+            font-size: 1.125rem;
+          }
+</style>
+      <nav>
+        <div class="logo">鬼才Gato Zenzei</div>
+<ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="#social-links">Social Links</a></li>
+        </ul>
+<button class="mobile-menu-btn">
+          <i data-feather="menu"></i>
+        </button>
+        
+        <div class="mobile-menu hidden">
+          <ul class="flex flex-col p-4 gap-2">
+            <li><a href="/" class="block py-2 px-4 hover:bg-red-600 rounded">
+              <i data-feather="home" class="w-4 h-4 mr-2"></i>Home
+            </a></li>
+            <li><a href="/gallery.html" class="block py-2 px-4 hover:bg-red-600 rounded">Portfolio</a></li>
+            <li><a href="/about.html" class="block py-2 px-4 hover:bg-red-600 rounded">Chi Siamo</a></li>
+            <li><a href="/blog.html" class="block py-2 px-4 hover:bg-red-600 rounded">Blog</a></li>
+            <li><a href="/contact.html" class="block py-2 px-4 hover:bg-red-600 rounded">Contatti</a></li>
+          </ul>
+</div>
+      </nav>
+    `;
+    
+    // Add mobile menu functionality
+    const mobileMenuBtn = this.shadowRoot.querySelector('.mobile-menu-btn');
+    const mobileMenu = this.shadowRoot.querySelector('.mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        feather.replace();
+      });
+    }
+  }
+}
+
+customElements.define('custom-navbar', CustomNavbar);
+</script>
+<script data-injected-from="script.js">
+
+// Shared JavaScript across all pages
+
+// Enhanced Insanity Level Counter Animation
+function animateInsanityLevel() {
+    const levelElement = document.getElementById('insanity-level');
+    if (!levelElement) return;
+    
+    let currentLevel = 87;
+    const targetLevel = Math.floor(Math.random() * 20) + 88;
+    
+    const interval = setInterval(() => {
+        if (currentLevel < targetLevel) {
+            currentLevel++;
+            levelElement.textContent = currentLevel + '%';
+            
+            if (currentLevel >= 95) {
+                levelElement.classList.add('text-red-500', 'pulse');
+                levelElement.classList.remove('text-green-400');
+            }
+        } else {
+            clearInterval(interval);
+            // Add celebration effect when reaching high levels
+            if (currentLevel >= 98) {
+                showRandomMeme();
+                showRandomMeme();
+                showRandomMeme();
+            }
+        }
+    }, 80);
+}
+
+// Enhanced Random Italian Meme with Tokyo Ghoul Style
+const memePhrases = [
+    "疯狂指数上升!", "Ben Fatto!", "Troppo Forte!", "666!", "Fantastico!", 
+    "Mamma Mia!", "Incredibile!", "Bella Mossa!", "Non Male!", 
+    "Kagune Attivato!", "Ghoul Power!", "做得好!"
+];
+
+function showRandomMeme() {
+    const randomPhrase = memePhrases[Math.floor(Math.random() * memePhrases.length)];
+    
+    // Create enhanced floating text with Tokyo Ghoul style
+    const memeElement = document.createElement('div');
+    memeElement.textContent = randomPhrase;
+    memeElement.className = 'fixed text-red-500 font-bold text-2xl z-50 pointer-events-none glitch-text';
+    memeElement.style.left = Math.random() * 70 + 15 + '%';
+    memeElement.style.top = Math.random() * 70 + 15 + '%';
+    memeElement.style.opacity = '0';
+    memeElement.style.transform = 'translateY(20px) scale(0.8)';
+    memeElement.style.textShadow = '0 0 10px rgba(255,0,0,0.8)';
+    
+    document.body.appendChild(memeElement);
+    
+    // Enhanced animation sequence
+    setTimeout(() => {
+        memeElement.style.transition = 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        memeElement.style.opacity = '1';
+        memeElement.style.transform = 'translateY(0) scale(1)';
+    }, 50);
+    
+    // Add blood splatter effect around the text
+    setTimeout(() => {
+        for (let i = 0; i < 3; i++) {
+            createBloodSplatter(memeElement);
+        }
+    }, 200);
+    
+    // Animate out and remove
+    setTimeout(() => {
+        memeElement.style.opacity = '0';
+        memeElement.style.transform = 'translateY(-30px) scale(1.2)';
+    }, 1800);
+    
+    setTimeout(() => {
+        if (document.body.contains(memeElement)) {
+            document.body.removeChild(memeElement);
+        }
+    }, 3000);
+}
+
+// Create blood splatter particles
+function createBloodSplatter(parentElement) {
+    const splatter = document.createElement('div');
+    splatter.className = 'absolute w-2 h-2 bg-red-600 rounded-full pointer-events-none';
+    splatter.style.filter = 'blur(1px)';
+    
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * 40 + 20;
+    splatter.style.left = '50%';
+    splatter.style.top = '50%';
+    splatter.style.transform = 'translate(-50%, -50%)';
+    
+    parentElement.style.position = 'relative';
+    parentElement.appendChild(splatter);
+    
+    // Animate splatter
+    setTimeout(() => {
+        splatter.style.transition = 'all 0.8s ease';
+        splatter.style.opacity = '0';
+        splatter.style.transform = `translate(-50%, -50%) translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)';
+    }, 100);
+    
+    setTimeout(() => {
+        if (parentElement.contains(splatter)) {
+            parentElement.removeChild(splatter);
+        }
+    }, 1000);
+}
+
+// Enhanced Social Card Animations
+function initSocialAnimations() {
+    const socialCards = document.querySelectorAll('.social-card');
+    const characterCards = document.querySelectorAll('.character-card');
+    
+    // Social cards animation
+    socialCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px) scale(0.9)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0) scale(1)';
+            card.style.transitionDelay = (index * 0.15) + 's';
+        }, 100);
+    });
+    
+    // Character cards animation
+    characterCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(' + (index % 2 === 0 ? -50 : 50) + 'px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.7s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateX(0)';
+            card.style.transitionDelay = (index * 0.2) + 's';
+        }, 300);
+    });
+}
+// Random Italian Meme Phrases
+const memePhrases = [
+    "Ben Fatto!", "Troppo Forte!", "666!", "Fantastico!", "Mamma Mia!", 
+    "Incredibile!", "Bella Mossa!", "Non Male!", "Non Ce La Faccio Più!"
+];
+function showRandomMeme() {
+    const randomPhrase = memePhrases[Math.floor(Math.random() * memePhrases.length)];
+    // Create floating text element
+    const memeElement = document.createElement('div');
+    memeElement.textContent = randomPhrase;
+    memeElement.className = 'fixed text-red-500 font-bold text-2xl z-50 pointer-events-none';
+    memeElement.style.left = Math.random() * 80 + 10 + '%';
+    memeElement.style.top = Math.random() * 80 + 10 + '%';
+    memeElement.style.opacity = '0';
+    memeElement.style.transform = 'translateY(20px)';
+    
+    document.body.appendChild(memeElement);
+    
+    // Animate in
+    setTimeout(() => {
+        memeElement.style.transition = 'all 1s ease';
+        memeElement.style.opacity = '1';
+        memeElement.style.transform = 'translateY(0)';
+    }, 100);
+    
+    // Animate out and remove
+    setTimeout(() => {
+        memeElement.style.opacity = '0';
+        memeElement.style.transform = 'translateY(-20px)';
+    }, 1500);
+    
+    setTimeout(() => {
+        document.body.removeChild(memeElement);
+    }, 2500);
+}
+// Initialize subtraction banner
+function initSubtractionBanner() {
+    const banner = document.getElementById('subtractionBanner');
+    if (!banner) return;
+    
+    // Create circle particles
+    createCircleParticles();
+    
+    // Enhanced banner animation with circle transformation
+    banner.style.animation = 'banner-scroll 45s linear infinite';
+    
+    // Add hover effect for circle transformation
+    banner.addEventListener('mouseenter', function() {
+        const texts = this.querySelectorAll('.banner-text');
+        texts.forEach((text, index) => {
+            setTimeout(() => {
+                text.style.transform = 'scale(0.8)';
+                text.style.opacity = '0.5';
+                
+                // Create circle transformation
+                createCircleTransformation(text);
+            }, index * 50);
+        });
+        
+        // Add continuous circle particles
+        const particleInterval = setInterval(() => {
+            createCircleParticles();
+        }, 2000);
+        
+        // Store interval for cleanup
+        banner.dataset.particleInterval = particleInterval;
+    });
+    
+    banner.addEventListener('mouseleave', function() {
+        const texts = this.querySelectorAll('.banner-text');
+        texts.forEach(text => {
+            text.style.transform = 'scale(1)';
+            text.style.opacity = '1';
+            
+            // Clear particle interval
+            if (banner.dataset.particleInterval) {
+                clearInterval(parseInt(banner.dataset.particleInterval));
+        }
+    });
+}
+
+// Create circle particles at bottom
+function createCircleParticles() {
+    const container = document.querySelector('.subtraction-banner-container');
+    if (!container) return;
+    
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'circle-particles';
+    
+    for (let i = 0; i < 5; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'circle-particle';
+        
+        const size = Math.random() * 15 + 10;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = (Math.random() * 2) + 's';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        particle.style.background = `rgba(255, 0, 0, ${Math.random() * 0.4 + 0.3})';
+        
+        particlesContainer.appendChild(particle);
+    }
+    
+    container.appendChild(particlesContainer);
+    
+    // Remove particles after animation
+    setTimeout(() => {
+        if (container.contains(particlesContainer)) {
+            container.removeChild(particlesContainer);
+        }
+    }, 3000);
+}
+
+// Create circle transformation on hover
+function createCircleTransformation(element) {
+    const rect = element.getBoundingClientRect();
+    const circle = document.createElement('div');
+    circle.className = 'circle-transformation';
+    
+    circle.style.cssText = `
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    
+    const size = Math.random() * 40 + 20;
+    circle.style.cssText += `
+            width: ${size}px;
+            height: ${size}px;
+            border-radius: 50%;
+            background: rgba(255, 0, 0, 0.3);
+            filter: blur(8px);
+            animation: circle-pulse 1.5s ease-in-out infinite;
+        `;
+    
+    document.body.appendChild(circle);
+    
+    setTimeout(() => {
+        if (document.body.contains(circle)) {
+            document.body.removeChild(circle);
+        }
+    }, 1500);
+}
+// Export functions for use in other files
+window.GhoulCanvas = {
+    animateInsanityLevel,
+    showRandomMeme,
+    initGalleryAnimations,
+    toggleMobileMenu,
+    initSubtractionBanner
+};
+// Gallery Image Loading Animation
+function initGalleryAnimations() {
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    
+    galleryCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        card.style.transitionDelay = (index * 0.1) + 's';
+        }, 100);
+    });
+}
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize animations
+        animateInsanityLevel();
+        initGalleryAnimations();
+        initSocialAnimations();
+        initSubtractionBanner();
+// Random meme popups
+    setInterval(() => {
+        if (Math.random() > 0.7) {
+            showRandomMeme();
+        }
+    }, 5000);
+    
+    // Add blood splatter effect to random elements
+    const elements = document.querySelectorAll('h1, h2, h3, .gallery-card');
+    elements.forEach(element => {
+        if (Math.random() > 0.8) {
+            element.classList.add('blood-splatter');
+        }
+    });
+    
+    // Add rain effect to hero section
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+        heroSection.classList.add('rain-overlay');
+    }
+    
+    // Mobile menu auto-close on link click
+    const mobileLinks = document.querySelectorAll('.mobile-menu a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    });
+// Mobile menu toggle (if needed in components)
+function toggleMobileMenu() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden');
+    }
+}
+
+// Export functions for use in other files
+window.GhoulCanvas = {
+    animateInsanityLevel,
+    showRandomMeme,
+    initGalleryAnimations,
+    toggleMobileMenu
+};
+</script>
+
+<div id="deepsite-badge-wrapper" style="position: fixed; bottom: 20px; left: 20px; z-index: 999999; color: rgb(255, 255, 255); border-radius: 9999px; background: rgba(0, 0, 0, 0.4); font-size: 12px; font-weight: 500; display: inline-block; cursor: pointer; padding: 1.5px; overflow: hidden; backdrop-filter: blur(16px) saturate(180%);"><span id="deepsite-badge-inner" style="background: rgba(0, 0, 0, 0.6); padding: 8px 16px; display: flex; align-items: center; border-radius: 9999px; box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 32px 0px; transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.1);"><a href="https://huggingface.co/deepsite" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255); text-decoration: none; font-weight: 500; display: flex; align-items: center; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; text-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px;"><img src="https://huggingface.co/deepsite/logo.svg" alt="DeepSite" style="margin-right: 6px; width: 16px; height: 16px; filter: brightness(0) invert(1);">Made with DeepSite</a></span><i></i></div></body></html>
